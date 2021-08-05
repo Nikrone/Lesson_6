@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+   
+    //        создание View КОДОМ
     var emptyViewCode: UIView = UIView()
     
     @IBOutlet weak var button: UIButton!
@@ -28,16 +29,19 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //        создание View кодом
-        let  emptyViewCode = UIView (frame: CGRect(
+        //        создание View КОДОМ
+        emptyViewCode = UIView (
+            frame: CGRect(
                 x: 100,
                 y: 100,
                 width: 100,
                 height: 100
             )
         )
-        emptyViewCode.backgroundColor = .brown
         view.addSubview(emptyViewCode)
+        emptyViewCode.backgroundColor = .orange
+        emptyViewCode.layer.cornerRadius = 50
+
         
         
         print("viewWillAppear")
@@ -79,15 +83,19 @@ class ViewController: UIViewController {
         print(button.bounds)
     
     
-        //    изменение расположения
+        //    изменение расположения View
             emptyViewCode.frame = CGRect (
-                    x: 300,
-                    y: 300,
+                    x: 200,
+                    y: 200,
                     width: 100,
                     height: 100
             )
         
-        emptyViewCode.center = CGPoint(x: 400, y: 400)
+//        origin - верхняя левая точка
+        emptyViewCode.frame.origin = CGPoint(x: 300, y: 300)
+        
+//        center - центр
+        emptyViewCode.center = CGPoint(x: 300, y: 300)
     }
     
     //  frame - расположение и размер view с использованием системы координат родительского представления (важно для размещения представления в superview).
@@ -117,8 +125,8 @@ class ViewController: UIViewController {
     
     
     
+
     
-//    ДОДЕЛАЙ
 //    перемещение View на место тапа по экрану
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -126,8 +134,13 @@ class ViewController: UIViewController {
 //        получили координату места тапа
         let coordinate = (touches.first?.location(in: view))!
         emptyViewCode.center = coordinate
-        
-        
+    }
+    
+//    плавное перемещение View на экране по тапу
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        let coordinate = (touches.first?.location(in: view))!
+        emptyViewCode.center = coordinate
     }
     
 }
