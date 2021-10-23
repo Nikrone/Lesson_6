@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     
     
     //    экран ПОЛНОСТЬЮ загрузился (вызывается бесконечно)
-    //    ВЫЗЫВАЕТСЯ - методы связанные с Анимацией!
+    //    ВЫЗЫВАЮТСЯ - методы связанные с Анимацией!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
